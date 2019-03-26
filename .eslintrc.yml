@@ -1,0 +1,17 @@
+---
+plugins:
+  - babel
+
+env:
+  node: true
+  browser: true
+
+parser: babel-eslint
+
+extends:
+  - 'airbnb'
+
+rules:
+  react/jsx-filename-extension: 0
+  no-underscore-dangle: 0
+  react/prop-types: 0

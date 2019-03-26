@@ -1,4 +1,4 @@
-var fs = require('fs');
+const fs = require('fs');
 
 const camelize = str => str.split('-').map(s => `${s[0].toUpperCase()}${s.slice(1).toLowerCase()}`).join('');
 
@@ -25,4 +25,4 @@ export default class ${camelize(name)} extends React.Component {
   fs.writeFileSync(`${path}/index.js`, indexData);
 };
 
-fn('app');
+fn('row');

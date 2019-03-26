@@ -1,0 +1,13 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+}
+
+.row__left {
+  width: 48%;
+}
+
+.row__right {
+  width: 48%;
+}

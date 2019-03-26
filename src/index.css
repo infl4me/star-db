@@ -1,0 +1,27 @@
+:root {
+  --dark-gray: #222222;
+  --gray: #444444;
+  --green: #00bc8c;
+  --light-gray: #303030;
+  --border-color: var(--gray);
+}
+
+body {
+  margin: 0;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: var(--dark-gray);
+}
+
+.box {
+  border: 1px solid var(--border-color);
+  background-color: var(--light-gray);
+  border-radius: 5px;
+}
+
+@media  (min-width: 1200px) {
+  .container {
+    width: 1550px;
+    margin: 0 auto;
+  }
+}

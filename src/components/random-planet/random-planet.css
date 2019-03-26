@@ -1,0 +1,24 @@
+.random-planet {
+  display: flex;
+  margin-bottom: 80px;
+  padding: 20px;
+  min-height: calc(20px + 250px + 2px); /* padding image border */
+}
+
+.random-planet__img {
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
+  margin-right: 5%;
+}
+
+.random-planet__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.random-planet__list-item {
+  padding: 10px;
+  border-top: 1px solid var(--border-color);
+}
