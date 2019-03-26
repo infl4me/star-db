@@ -11,7 +11,7 @@ export default class App extends React.Component {
       <div>
         <Header />
         <RandomPlanet />
-        <Row left={'asd'} right={'qwe'} />
+        <Row left={'item-list'} right={'item-details'} />
       </div>
     );
   }
