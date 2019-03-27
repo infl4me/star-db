@@ -1,0 +1,29 @@
+.item-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: flex-start;
+}
+
+.item-details__img {
+  width: 48%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top;
+  border-radius: 5px;
+}
+
+.item-details__block {
+  width: 48%;
+}
+
+.item-details__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item-details__list-item {
+  padding: 10px;
+  border-top: 1px solid var(--border-color); 
+}

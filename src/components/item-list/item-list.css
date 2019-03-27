@@ -1,0 +1,19 @@
+.item-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item-list__item {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.item-list__item:last-child {
+  border-bottom: none; 
+}
+
+.item-list__btn {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
