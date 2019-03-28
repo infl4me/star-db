@@ -16,6 +16,7 @@ html {
 
 body {
   margin: 0;
+  min-width: 320px;
   font-size: 18px;
   font-family: "Arial", sans-serif;
   color: #ffffff;
@@ -42,7 +43,7 @@ body {
   outline: 1px solid var(--green);
 }
 
-@media  (min-width: 1200px) {
+@media  (min-width: 1550px) {
   .container {
     width: 1550px;
     margin: 0 auto;

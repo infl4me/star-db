@@ -1,13 +1,16 @@
-/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-import Row from '../row';
-import ItemList from '../item-list';
-import ItemDetails from '../item-details';
+import { PeoplePage, PlanetPage, StarshipPage } from '../pages';
+import ErrorBoundary from '../error-boundary';
+import { SwapiServiceProvider } from '../swapi-service-context';
+import SwapiService from '../../services/swapi-service';
+
 import './app.css';
 
 export default class App extends React.Component {
+  swapiService = new SwapiService();
+
   state = {
     selectedId: null,
   }
@@ -20,14 +23,17 @@ export default class App extends React.Component {
     const { selectedId } = this.state;
 
     return (
-      <div>
-        <Header />
-        <RandomPlanet />
-        <Row
-          left={<ItemList onSelected={this.onSelected} />}
-          right={selectedId && <ItemDetails selectedId={selectedId} />}
-        />
-      </div>
+      <ErrorBoundary>
+        <SwapiServiceProvider value={this.swapiService}>
+          <div className="app">
+            <Header />
+            <RandomPlanet />
+            <PeoplePage onSelected={this.onSelected} selectedId={selectedId} />
+            {/* <PlanetPage onSelected={this.onSelected} selectedId={selectedId} /> */}
+            {/* <StarshipPage onSelected={this.onSelected} selectedId={selectedId} /> */}
+          </div>
+        </SwapiServiceProvider>
+      </ErrorBoundary>
     );
   }
 }

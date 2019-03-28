@@ -2,6 +2,7 @@ import React from 'react';
 import './random-planet.css';
 import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator';
 
 export default class RandomPlanet extends React.Component {
   swapiService = new SwapiService();
@@ -10,6 +11,7 @@ export default class RandomPlanet extends React.Component {
     loading: true,
     planet: null,
     imageUrl: null,
+    error: false,
   }
 
   componentDidMount() {
@@ -25,6 +27,9 @@ export default class RandomPlanet extends React.Component {
       .then((planet) => {
         const imageUrl = getPlanetImg(id);
         this.setState({ planet, imageUrl, loading: false });
+      })
+      .catch(() => {
+        this.setState({ loading: false, error: true });
       });
   }
 
@@ -52,11 +57,12 @@ export default class RandomPlanet extends React.Component {
   }
 
   render() {
-    const { loading } = this.state;
+    const { loading, error } = this.state;
     return (
       <div className="random-planet box">
         {loading && <Spinner />}
-        {loading || this.renderPlanet()}
+        {error && <ErrorIndicator />}
+        {!loading && !error && this.renderPlanet()}
       </div>
     );
   }

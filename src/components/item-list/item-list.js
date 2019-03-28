@@ -1,11 +1,9 @@
 import React from 'react';
-import { withHandlers } from '../hoc-helpers';
-import SwapiService from '../../services/swapi-service';
 import './item-list.css';
 
-const ItemList = ({ data, onSelected }) => {
+const ItemList = ({ data, onSelected, renderItem }) => {
   const items = data.map((item) => {
-    const { name, id } = item;
+    const { id } = item;
     return (
       <li key={id} className="item-list__item">
         <button
@@ -13,7 +11,7 @@ const ItemList = ({ data, onSelected }) => {
           onClick={() => onSelected(id)}
           className="item-list__btn btn"
         >
-          {name}
+          {renderItem(item)}
         </button>
       </li>
     );
@@ -25,6 +23,4 @@ const ItemList = ({ data, onSelected }) => {
   );
 };
 
-const { getAllPeople } = new SwapiService();
-
-export default withHandlers(ItemList, getAllPeople);
+export default ItemList;
