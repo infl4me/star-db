@@ -1,25 +1,25 @@
 import React from 'react';
 import ItemDetails from '../item-details';
-import SwapiService from '../../services/swapi-service';
-import { withHandlers } from '../hoc-helpers';
-
-const {
-  getPerson,
-  getPlanet,
-  getStarship,
-  getPersonImg,
-  getPlanetImg,
-  getStarshipImg,
-} = new SwapiService();
+import { withHandlers, withSwapiService } from '../hoc-helpers';
 
 const Record = ({
   data, field, label, cn,
 }) => <li className={cn}>{`${label}: ${data[field]}`}</li>;
 
+const mapPersonMethodsToProps = ({ getPerson, getPersonImg }) => (
+  { getData: getPerson, getImgUrl: getPersonImg }
+);
+const mapPlanetMethodsToProps = ({ getPlanet, getPlanetImg }) => (
+  { getData: getPlanet, getImgUrl: getPlanetImg }
+);
+const mapStarshipMethodsToProps = ({ getStarship, getStarshipImg }) => (
+  { getData: getStarship, getImgUrl: getStarshipImg }
+);
+
 const PersonDetails = (props) => {
-  const Component = withHandlers(ItemDetails, getPerson);
+  const Component = withSwapiService(withHandlers(ItemDetails), mapPersonMethodsToProps);
   return (
-    <Component {...props} getImgUrl={getPersonImg}>
+    <Component {...props}>
       <Record label="Gender" field="gender" />
       <Record label="Birth year" field="birthYear" />
       <Record label="Eye color" field="eyeColor" />
@@ -29,9 +29,9 @@ const PersonDetails = (props) => {
 
 
 const PlanetDetails = (props) => {
-  const Component = withHandlers(ItemDetails, getPlanet);
+  const Component = withSwapiService(withHandlers(ItemDetails), mapPlanetMethodsToProps);
   return (
-    <Component {...props} getImgUrl={getPlanetImg}>
+    <Component {...props}>
       <Record label="Population" field="population" />
       <Record label="Rotation period" field="rotationPeriod" />
       <Record label="diameter" field="diameter" />
@@ -41,9 +41,9 @@ const PlanetDetails = (props) => {
 
 
 const StarshipDetails = (props) => {
-  const Component = withHandlers(ItemDetails, getStarship);
+  const Component = withSwapiService(withHandlers(ItemDetails), mapStarshipMethodsToProps);
   return (
-    <Component {...props} getImgUrl={getStarshipImg}>
+    <Component {...props}>
       <Record label="Model" field="model" />
       <Record label="Length" field="length" />
       <Record label="Cost" field="costInCredits" />

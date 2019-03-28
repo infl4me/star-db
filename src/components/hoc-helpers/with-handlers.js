@@ -2,7 +2,7 @@ import React from 'react';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 
-export default (Component, asd) => (
+export default Wrapped => (
   class WithHandlers extends React.Component {
     state = {
       loading: true,
@@ -24,8 +24,7 @@ export default (Component, asd) => (
     updateData() {
       this.setState({ loading: true });
       const { selectedId, getData } = this.props;
-      const asq = getData || asd;
-      asq(selectedId)
+      getData(selectedId)
         .then((data) => {
           this.setState({ data, loading: false });
         })
@@ -43,7 +42,7 @@ export default (Component, asd) => (
         return <ErrorIndicator />;
       }
       const { children } = this.props;
-      return <Component {...this.props} data={data}>{children}</Component>;
+      return <Wrapped {...this.props} data={data}>{children}</Wrapped>;
     }
   }
 );
