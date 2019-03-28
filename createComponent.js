@@ -25,4 +25,4 @@ export default class ${camelize(name)} extends React.Component {
   fs.writeFileSync(`${path}/index.js`, indexData);
 };
 
-fn('item-details');
+fn('record');

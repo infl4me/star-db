@@ -3,6 +3,7 @@ import './random-planet.css';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 import { withSwapiService } from '../hoc-helpers';
+import { getRandomInt } from '../../utils';
 
 class RandomPlanet extends React.Component {
   state = {
@@ -16,10 +17,8 @@ class RandomPlanet extends React.Component {
     this.updatePlanet();
   }
 
-  getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-
   updatePlanet() {
-    const id = this.getRandomInt(2, 19);
+    const id = getRandomInt(2, 19);
     const { getPlanet, getPlanetImg } = this.props;
     getPlanet(id)
       .then((planet) => {
@@ -67,4 +66,4 @@ class RandomPlanet extends React.Component {
 }
 const mapMethodsToProps = ({ getPlanet, getPlanetImg }) => ({ getPlanet, getPlanetImg });
 
-export default withSwapiService(RandomPlanet, mapMethodsToProps);
+export default withSwapiService(mapMethodsToProps)(RandomPlanet);
