@@ -1,12 +1,15 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-import { PeoplePage, PlanetPage, StarshipPage } from '../pages';
+import { PeoplePage, PlanetsPage, StarshipsPage } from '../pages';
 import ErrorBoundary from '../error-boundary';
 import { SwapiServiceProvider } from '../swapi-service-context';
-import { SwapiService } from '../../services';
+// eslint-disable-next-line no-unused-vars
+import { SwapiService, DummySwapiService } from '../../services';
 
 import './app.css';
+import { StarshipDetails } from '../sw-components';
 
 export default class App extends React.Component {
   swapiService = new SwapiService();
@@ -15,13 +18,23 @@ export default class App extends React.Component {
     return (
       <ErrorBoundary>
         <SwapiServiceProvider value={this.swapiService}>
-          <div className="app">
-            <Header />
-            <RandomPlanet />
-            <PeoplePage />
-            <PlanetPage />
-            <StarshipPage />
-          </div>
+          <Router>
+            <div className="app">
+              <Header />
+              <RandomPlanet />
+              <Route path="/" render={() => <h2>Welcome!</h2>} exact />
+              <Route path="/people" component={PeoplePage} />
+              <Route path="/planets" component={PlanetsPage} />
+              <Route path="/starships" component={StarshipsPage} exact />
+              <Route
+                path="/starships/:id"
+                render={({ match }) => {
+                  const { id } = match.params;
+                  return <StarshipDetails selectedId={id} />;
+                }}
+              />
+            </div>
+          </Router>
         </SwapiServiceProvider>
       </ErrorBoundary>
     );
