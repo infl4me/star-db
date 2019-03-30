@@ -7,13 +7,13 @@ const Header = () => (
     <Link className="header__logo" to="/">StarDB</Link>
     <ul className="header__list">
       <li className="header__list-item">
-        <Link className="header__link" to="/people">People</Link>
+        <Link className="header__link" to="/people/">People</Link>
       </li>
       <li className="header__list-item">
-        <Link className="header__link" to="/planets">Planets</Link>
+        <Link className="header__link" to="/planets/">Planets</Link>
       </li>
       <li className="header__list-item">
-        <Link className="header__link" to="/starships">Starships</Link>
+        <Link className="header__link" to="/starships/">Starships</Link>
       </li>
     </ul>
   </header>

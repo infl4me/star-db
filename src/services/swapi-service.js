@@ -3,7 +3,7 @@ import axios from 'axios';
 export default class {
   _apiBase = 'https://swapi.co/api/';
 
-  _proxy = 'https://cors-anywhere.herokuapp.com';
+  _proxy = 'https://cors-anywhere.herokuapp.com/';
 
   _imgBase = 'https://starwars-visualguide.com/assets/img/';
 
