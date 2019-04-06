@@ -17,7 +17,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "http://infl4me.github.io/star-db/",
   "eslintConfig": {
     "extends": "react-app"
   },

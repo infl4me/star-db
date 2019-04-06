@@ -17,4 +17,5 @@ lint:
 	npx eslint .
 
 deploy:
-	npm run deploy
+	npm run build
+	surge ./build star-db.surge.sh
