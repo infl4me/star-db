@@ -1,1 +1,1 @@
-https://infl4me.github.io/star-db/
+http://star-db.surge.sh/
